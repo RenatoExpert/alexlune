@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Alexlune Simulador</title>
+	</head>
+	<body>
+		<div id='header' class='flex'>
+			<div>
+				<h1>Alexlune • Simulador de Lua</h1>
+			</div>
+			<div id='cred-lang' class='flex'>
+				<div>
+					<p><a href='#credits'>Credits</a></p>
+				</div>
+				<div class='pad50'>
+					<p>
+						<label for="language">Language</label>
+						<select id="language" class='oneline'>
+							<option value="portuguese">Português</option>
+							<option value="english">English</option>
+							<option value="french">Français</option>
+							<option value="spanish">Español</option>
+						</select>
+					</p>
+				</div>		
+			</div>
+		</div>
+		<div id='big' class='border-solid flex'>
+			<div id='left'>
+				<div id='maincan' class=''>
+					<svg id='first' width='600' height='600'>
+						<circle id='big-circle' cx='300' cy='300' r='200' stroke='yellow' stroke-width='5' fill='none' /> 
+						<circle id='terra' cx='300' cy='300' r='30' fill='green'/>
+						<circle id='terra' cx='-250' cy='300' r='300' fill='yellow'/>
+						<svg id='lua1' x='260' y='260'>
+							<g>
+								<path d=" M 40 80 A 40 40 90 0 1 40 00" fill='white'/>
+								<path d=" M 40 00 A 40 40 270 0 1 40 80" fill='gray' />
+							</g>
+						</svg>
+					</svg>
+					<div id='marcagrau'>
+						<p>Posicao em graus: <var id='posang'></var>º</p>
+					</div>
+				</div>
+				<div id='lebo' class='flex'>                                          
+					<div id='leboleft' class='flex' >
+						<div class='border-solid' style='width:200px'>
+							<h3>Animation</h3>
+							<button onclick='indispo()'>Start animation</button>
+							<p>animation rate:</p>
+							<p>trecooooooo</p>
+						</div>
+						<div class='border-solid' style='width:200px'>
+							<h3>increment animation</h3>
+							<div class='flex'>
+								<div style='text-align:right;'>
+									<p>day:<p>
+									<p>hour:</p>
+									<p>minute:</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='leboright' class='border-solid' style='width:250px'>
+						<h3>Diagram Options</h3>
+						<input type='checkbox'><label>show angle</label><br>
+						<input type='checkbox'><label>show lunar landmark</label><br>
+						<input type='checkbox'><label>show time tickmarks</label>
+					</div>	
+				</div>
+			</div>
+			<div id='right' class='border-solid float-right'>
+				<div id='riup' class='border-solid pad50'>
+					<h2>Moon Phase</h2>
+					<div id='second' class='sec-img'>
+						<svg id='second-svg' width="150" height="150">
+							<mask id='sombramask'>
+								<circle cx="75" cy="75" r="50" stroke="gray" stroke-width="4" fill="white"/>
+							</mask>
+								<circle cx="75" cy="75" r="50" stroke="gray" stroke-width="4" fill="white"/>
+							<circle id='sombra' cx="-25" cy="75" r="50" stroke="none" stroke-width="4" fill="gray"/>
+
+						</svg>
+					</div>
+					<p><var id='lumus'></var>% illuminated </p>
+					<p>time since new moon:</p>
+					<p>1 day; 0 hours</p>
+					<button onclick='indispo()'>Hide</button>
+				</div>
+				<div id='ribo' class='border-solid pad50'>
+					<h2>Horizon Diagram</h2>
+					<div id='third' class='sec-img'>
+						<svg width="100" height="100">
+							<circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+						</svg>
+					</div>
+					<p>observer's local time:</p>
+					<p>10:52 am</p>
+					<button onclick='indispo()'>Hide</button>
+				</div>
+			</div>
+		</div>
+		<script src='script/first.js'>
+		</script>
+		
+		<script src='script/second.js'>
+		</script>
+
+		<script src='script/third.js'>
+		</script>
+
+		<script src='script/main.js'>
+		</script>
+
+	</body>
+</html>
+
+<style>
+	.border-solid {border:1px solid #000000;}
+	.flex {display:flex;}
+	.float-right {float:right}
+	.pad50 {padding-left:50px}
+	.sec-img {width:150px;height:150px}
+	.oneline {height:20px}
+
+	#cred-lang {position:absolute;left:600px;top:20px}
+	#big {width:900px;height:800px;left:60px}
+		#left {width:600px}
+			#maincan {width:600px;height:600px;background-color:Midnightblue}
+				#marcagrau{position:relative;top:-600px;left:30px;color:white}
+				#sombra{mask: url(#sombramask);}
+			#lebo {height:200px}
+		#right {width:300px}
+			#right > div { height:50% }
+			#second {background-color:black}
+</style>
