@@ -42,6 +42,9 @@
 					<div id='marcagrau'>
 						<p>Posicao em graus: <var id='posang'></var>º</p>
 					</div>
+					<div id='terra'>
+						<img id='terrain' src='img/terrapure.svg' width='100' height'120'></svg>
+					</div>
 				</div>
 				<div id='lebo' class='flex'>                                          
 					<div id='leboleft' class='flex' >
@@ -101,6 +104,10 @@
 				</div>
 			</div>
 		</div>
+
+		<script src='script/main.js'>
+		</script>
+
 		<script src='script/first.js'>
 		</script>
 		
@@ -108,9 +115,6 @@
 		</script>
 
 		<script src='script/third.js'>
-		</script>
-
-		<script src='script/main.js'>
 		</script>
 
 	</body>
@@ -129,6 +133,8 @@
 		#left {width:600px}
 			#maincan {width:600px;height:600px;background-color:Midnightblue}
 				#marcagrau{position:relative;top:-600px;left:30px;color:white}
+				#terra {position:relative;left:250px;top:-410px;}
+					#terrain {transform:rotate(0deg)}
 				#sombra{mask: url(#sombramask);}
 			#lebo {height:200px}
 		#right {width:300px}
