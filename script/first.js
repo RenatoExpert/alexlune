@@ -18,7 +18,6 @@ const ciclomaior = function () {
 	var lua1y = parseFloat(lua1.getAttributeNS(null, 'y'));
 	lua1.setAttributeNS(null, 'y', calcy(moonang));
 	terra.style.transform = 'rotate(' + terraang + 'deg)';
-	min+=3600;
 	requestAnimationFrame (ciclomaior);
 }
 ciclomaior();
