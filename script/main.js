@@ -1,4 +1,4 @@
-//var velocity = document.getElementById('velocity');
+var speed = document.getElementById('speed');
 var min = 0;
 var stop = 1;
 var factor = 360000;
@@ -10,7 +10,7 @@ const startAnimation = function () {
 };
 const changeTime = function (fac) { min += fac };
 const runcheck = function () { 
-	if ((stop == 0 )) { min+=100 } 
+	if ((stop == 0 )) { min += (speed.value*2) } 
 	requestAnimationFrame (runcheck)
 };
 runcheck();
