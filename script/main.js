@@ -8,8 +8,9 @@ const startAnimation = function () {
 	if ((stop == 0)) {stop = 1}
 	else {stop = 0};
 };
+const changeTime = function (fac) { min += fac };
 const runcheck = function () { 
-	if ((stop == 0 )) { min+=3000 } 
+	if ((stop == 0 )) { min+=100 } 
 	requestAnimationFrame (runcheck)
 };
 runcheck();
