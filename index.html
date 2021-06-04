@@ -1,16 +1,17 @@
 <!doctype html>
-<html>
+<html lang='en'>
 	<head>
 		<title>Alexlune Simulador</title>
+		<meta charset="UTF-8">
 	</head>
 	<body>
-		<div id='header' class='flex'>
+		<div id='header' class='flex margin30'>
 			<div>
 				<h1>Alexlune • Simulador de Lua (V.Alpha)</h1>
 			</div>
-			<div id='cred-lang' class='flex'>
+			<div id='cred-lang' class='flex margin30'>
 				<div>
-					<p><a href='#credits'>Credits</a></p>
+					<p><a href='#about'>About</a></p>
 				</div>
 				<div class='pad50'>
 					<p>
@@ -25,7 +26,7 @@
 				</div>		
 			</div>
 		</div>
-		<div id='big' class='border-solid flex'>
+		<div id='big' class='border-solid flex margin30'>
 			<div id='left'>
 				<div id='maincan' class=''>
 					<svg id='first' width='600' height='600'>
@@ -39,18 +40,18 @@
 						</svg>
 					</svg>
 					<div id='marcagrau'>
-						<p>Posicao em graus: <var id='posang'></var>º</p>
+						<p>Moon angle: <var id='posang'></var>º</p>
 					</div>
 					<div id='terra'>
 						<img id='terrain' src='img/terrapure.svg' width='100' height'120'></svg>
 					</div>
 				</div>
-				<div id='lebo' class='flex'>                                          
+				<div id='lebo' class='flex'>                                         
 					<div id='leboleft' class='flex' >
 						<div class='border-solid w200 pad20'>
 							<h3>Animation</h3>
 							<button onclick='startAnimation()'>Start animation/Stop</button>
-							<label for 'speed'><p>animation rate:</p></label>
+							<label for 'speed'><p>Animation rate:</p></label>
 							<p><input type="range" id="speed" name="speed" min="-100" max="100" value='10'></p>
 						</div>
 						<div id='changeTime' class='border-solid w150 pad20'>
@@ -115,6 +116,65 @@
 				</div>
 			</div>
 		</div>
+		<div id='about' class='border-solid block margin30 pad20'>
+			<h2>About</h2>
+			<p>
+				Alexlune is an webapp developed by <a>Renato Araujo</a>. So called
+				 in tribute for the great <a>Professor Alexandre Zabot</a>, UFSC.
+				<br>
+				The pourpose is to imitate an old simulator, made using Flash, an old Web Technology,
+				 no more available for public. I hope it helps to spreed scientific education worldwide,
+				 as well as support more enjoyable and clear learning on this theme.
+			</p>
+			<p>
+				<a href='https://github.com/RenatoExpert/alexlune' target="_blank">
+					<button>
+						See Github Repo
+					</button>
+				</a>
+			</p>
+			<hr>
+			<h3>The author: Renato Araujo</h3>
+			<p>
+				<ul>
+					<li>
+						<a>
+							Website
+						</a>
+					</li> 
+					<li>
+						<a>
+							Github Page
+						</a>
+					</li>
+				</ul>
+			</p>
+			<hr>
+			<h3>References</h3>
+			<p>
+				<ul>
+					<li>
+						Professor Zabot's Astronomy Course: 
+						<a href='https://astrofisica.ufsc.br/aa/g/' target="_blank">
+							Oficial Website
+						</a>
+						<a>
+							Youtube Playlist
+						</a>
+					</li>
+					<li>
+						<a href='https://gateway.golabz.eu/embed/apps/897b0ec0-0055-4a20-a6bd-6245315733f0/app.html' target="_blank">
+							Original Flash Content
+						</a>
+					</li>
+					<li>
+						<a href='https://astro.unl.edu/naap/lps/lps.html' target="_blank">
+							Astronomy Education at the University of Nebraska-Lincoln's Page
+						</a>
+					</li>
+				</ul>
+			</p>
+		</div>
 
 		<script src='script/main.js'>
 		</script>
@@ -134,6 +194,8 @@
 <style>
 	.border-solid {border:1px solid #000000;}
 	.flex {display:flex;}
+	.block {display:block;}
+	.relative {position:relative}
 	.float-right {float:right}
 	.pad20 {padding-left:20px}
 	.pad50 {padding-left:50px}
@@ -141,6 +203,7 @@
 	.oneline {height:20px}
 	.w200 {width:200px}
 	.w150 {width:150px}
+	.margin30 {margin:30px}
 
 	#cred-lang {position:absolute;left:600px;top:20px}
 	#big {width:900px;height:800px;left:60px}
@@ -156,4 +219,5 @@
 		#right {width:300px}
 			#right > div { height:50% }
 			#second {background-color:black}
+	#about {width:900px;height:800px;left:60px}
 </style>
