@@ -54,7 +54,7 @@
 							<label for 'speed'><p>Animation rate:</p></label>
 							<p><input type="range" id="speed" name="speed" min="-100" max="100" value='10'></p>
 						</div>
-						<div id='changeTime' class='border-solid w150'>
+						<div id='changeTime' class='border-solid'>
 							<h3>increment animation</h3>
 							<div class='flex'>
 								<div id='changeLabels'>
@@ -63,16 +63,18 @@
 									<p>minute:</p>
 								</div>
 								<div id='changeButtons'>
-									<p><button onclick='changeTime(1440)'>+</button>
+									<p>
+										<button onclick='changeTime(1440)'>+</button>
 										<button onclick='changeTime(-1440)'>-</button>
-										</p>
-									<p><button onclick='changeTime(+60)'>+</button>
+									</p>
+									<p>
+										<button onclick='changeTime(+60)'>+</button>
 										<button onclick='changeTime(-60)'>-</button>
-										</p>
-									<p><button onclick='changeTime(+1)'>+</button>
-								
+									</p>
+									<p>
+										<button onclick='changeTime(+1)'>+</button>
 										<button onclick='changeTime(-1)'>-</button>
-										</p>
+									</p>
 								</div>
 							</div>
 						</div>
