@@ -55,9 +55,11 @@
 							<p><input type="range" id="speed" name="speed" min="-100" max="100" value='10'></p>
 						</div>
 						<div id='changeTime' class='border-solid'>
-							<h3>increment animation</h3>
+							<span class='centerTXT'>
+								<h3>Increment animation</h3>
+							</span>
 							<div class='flex'>
-								<div id='changeLabels'>
+								<div id='changeLabels' class='pad20 rightTXT'>
 									<p>day:<p>
 									<p>hour:</p>
 									<p>minute:</p>
@@ -206,6 +208,8 @@
 	.w200 {width:200px}
 	.w150 {width:150px}
 	.margin30 {margin:30px}
+	.centerTXT {text-align:center}
+	.rightTXT {text-align:right}
 
 	#cred-lang {position:absolute;left:600px;top:20px}
 	#big {width:900px;height:800px;left:60px}
@@ -218,6 +222,7 @@
 			#lebo {height:200px}
 			#changeTime {line-height:21px}
 			#changeTime .flex {}
+				
 				#changeTime > button {width:21px;height:21px}
 		#right {width:300px}
 			#right > div { height:50% }
