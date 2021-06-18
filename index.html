@@ -48,31 +48,35 @@
 				</div>
 				<div id='lebo' class='flex'>                                         
 					<div id='leboleft' class='flex' >
-						<div class='border-solid w200 pad20'>
+						<div class='border-solid w200'>
 							<h3>Animation</h3>
 							<button onclick='startAnimation()'>Start animation/Stop</button>
 							<label for 'speed'><p>Animation rate:</p></label>
 							<p><input type="range" id="speed" name="speed" min="-100" max="100" value='10'></p>
 						</div>
-						<div id='changeTime' class='border-solid w150 pad20'>
-							<h3>increment animation</h3>
-							<div class='flex' style='top:-21px;position:relative'>
-								<div style='text-align:right;'>
+						<div id='changeTime' class='border-solid'>
+							<span class='centerTXT'>
+								<h3>Increment animation</h3>
+							</span>
+							<div class='flex'>
+								<div id='changeLabels' class='rightTXT w50pc'>
 									<p>day:<p>
 									<p>hour:</p>
 									<p>minute:</p>
 								</div>
-								<div style='text-align:left'>
-									<p><button onclick='changeTime(1440)'>+</button>
+								<div id='changeButtons'>
+									<p>
+										<button onclick='changeTime(1440)'>+</button>
 										<button onclick='changeTime(-1440)'>-</button>
-										</p>
-									<p><button onclick='changeTime(+60)'>+</button>
+									</p>
+									<p>
+										<button onclick='changeTime(+60)'>+</button>
 										<button onclick='changeTime(-60)'>-</button>
-										</p>
-									<p><button onclick='changeTime(+1)'>+</button>
-								
+									</p>
+									<p>
+										<button onclick='changeTime(+1)'>+</button>
 										<button onclick='changeTime(-1)'>-</button>
-										</p>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -203,7 +207,10 @@
 	.oneline {height:20px}
 	.w200 {width:200px}
 	.w150 {width:150px}
+	.w50pc {width:50%}
 	.margin30 {margin:30px}
+	.centerTXT {text-align:center}
+	.rightTXT {text-align:right}
 
 	#cred-lang {position:absolute;left:600px;top:20px}
 	#big {width:900px;height:800px;left:60px}
@@ -215,7 +222,9 @@
 				#sombra{mask: url(#sombramask);}
 			#lebo {height:200px}
 			#changeTime {line-height:21px}
-			#changeTime > button {width:21px;height:21px}
+			#changeTime .flex {}
+				
+				#changeTime > button {width:21px;height:21px}
 		#right {width:300px}
 			#right > div { height:50% }
 			#second {background-color:black}
