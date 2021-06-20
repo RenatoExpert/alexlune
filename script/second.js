@@ -1,8 +1,10 @@
 var showluz = document.getElementById('lumus');
 var sombra = document.getElementById('sombra');
+var nmLabel = document.getElementById('newmoon');
 var mare = 0;
 
-var sombrapos = function () { return (moonang/1.8)-25;};
+const sombrapos = function () { return (moonang/1.8)-25;};
+const NewMoon = function () { return (min + 21262) % 42524 }
 
 const sec_calc = function (alfa) {
 	let beta = Math.round(moonang%180/1.8);
@@ -16,6 +18,7 @@ const moon = function () {
 	var mooncx = parseFloat(sombra.getAttributeNS(null, 'cx'));
 	showluz.innerHTML=lumus;
 	sombra.setAttributeNS(null, 'cx', sombrapos());
+	nmLabel.innerHTML = daysFromMin(NewMoon()) + ' days,' + hoursFromMin(NewMoon()) + ' hours';
 	requestAnimationFrame (moon);
 }
 moon();
