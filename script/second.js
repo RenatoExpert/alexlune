@@ -3,11 +3,11 @@ var sombra = document.getElementById('sombra');
 var nmLabel = document.getElementById('newmoon');
 var mare = 0;
 
-const sombrapos = function () { return (moonang/1.8)-25;};
-const NewMoon = function () { return (min + 21262) % 42524 }
+const sombrapos = () => (moonang/1.8)-25;
+const NewMoon = () => (min + 21262) % 42524;
 
 const sec_calc = function (alfa) {
-	let beta = Math.round(moonang%180/1.8);
+	let beta = Math.round( Math.abs(moonang) % 180/1.8);
 	if (alfa >= 180) { return beta; mare=0 } 
 		else if (alfa < 180) { return 100-beta; mare=1 }
 		else {alert('error')}
