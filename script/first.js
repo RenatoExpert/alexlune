@@ -8,7 +8,10 @@ const calcx = function (ang) { return ((Math.cos(toRadians(ang))*200)+260) };
 const calcy = function (ang) { return ((Math.sin(toRadians(ang))*200)+260) };
 
 function toRadians (angle) {return angle * (Math.PI / 180)}
-const get_angs = function () { terraang = Math.round((min/4)%360); moonang = Math.round((min/119)%360) }  
+const get_angs = function () {
+	terraang = Math.round((min/4)%360);
+	moonang = Math.round((min/119)%360);
+}  
 
 const ciclomaior = function () {
 	get_angs();
