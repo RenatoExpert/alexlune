@@ -4,8 +4,8 @@ var min = 0;
 var factor = 360000;
 
 const pureMin = function (mm) { return mm % 60};
-const hoursFromMin = function (mm) { return Math.round((mm/60)%24) };
-const daysFromMin = function (mm) { return Math.round(mm/1440) };
+const hoursFromMin = function (mm) { return Math.abs(Math.round((mm/60)%24)) };
+const daysFromMin = function (mm) { return Math.abs(Math.round(mm/1440)) };
 const changeTime = function (fac) { min += fac };
 
 const indispo = function () { window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!')};
