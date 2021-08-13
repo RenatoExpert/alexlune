@@ -59,8 +59,8 @@
 					<div id='leboleft' class='flex w60pc' >
 						<div class='border-solid w50pc pad20'>
 							<h3>Animation</h3>
-							<button onclick='startAnimation()'>Start animation/Stop</button>
-							<label for 'speed'><p>Animation rate:</p></label>
+							<button id='animationController'>&#x25B6</button>
+							<label for 'speed'><p>&#x1F40E &#x2329 &#x1F422 &#x0F33 &#x1F422 &#x232A &#x1F40E</p></label>
 							<p><input type="range" id="speed" name="speed" min="-100" max="100" value='10'></p>
 						</div>
 						<div id='changeTime' class='border-solid w50pc'>
@@ -210,7 +210,7 @@
 	.block {display:block;}
 	.relative {position:relative}
 	.float-right {float:right}
-	.pad20 {padding-left:20px}
+	.pad20 {padding-left:20px;padding-right:20px}
 	.pad50 {padding-left:50px}
 	.sec-img {width:150px;height:150px}
 	.oneline {height:20px}
@@ -233,6 +233,9 @@
 					#terrain {transform:rotate(0deg)}
 				#sombra{mask: url(#sombramask);}
 			#lebo {height:200px}
+				#lebo p {text-align:center}
+				#animationController {width:100%;}
+				input[type=range] {width:100%}
 			#changeTime {line-height:21px}
 			#changeTime .flex {}
 				#changeMenu {}	
