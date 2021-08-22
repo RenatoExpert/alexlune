@@ -3,22 +3,30 @@ var sombra = document.getElementById('sombra');
 var nmLabel = document.getElementById('newmoon');
 var mare = 0;
 
-const sombrapos = () => (moonang/1.8)-25;
+
+const sombrapos = () => (lua.angle/1.8)-25;
 const NewMoon = () => (min + 21262) % 42524;
 
 const sec_calc = function (alfa) {
-	let beta = Math.round( Math.abs(moonang) % 180/1.8);
-	if (alfa >= 180) { return beta; mare=0 } 
-		else if (alfa < 180) { return 100-beta; mare=1 }
-		else {alert('error')}
+	let beta = Math.round( Math.abs(lua.angle) % 180/1.8);
+	if (alfa >= 180) { 
+		mare=0; 
+		return beta;
+	} 
+	else if (alfa < 180) { 
+		mare=1
+		return 100-beta;
+	}
+	else {alert('error')}
 };
 
 const moon = function () {
-	var lumus = sec_calc(moonang);
+	var lumus = sec_calc(lua.angle);
 	var mooncx = parseFloat(sombra.getAttributeNS(null, 'cx'));
 	showluz.innerHTML=lumus;
 	sombra.setAttributeNS(null, 'cx', sombrapos());
-	nmLabel.innerHTML = daysFromMin(NewMoon()) + ' days,' + hoursFromMin(NewMoon()) + ' hours';
+	nmLabel.innerHTML = Calcs.daysFromMin(NewMoon()) + ' days,' + Calcs.hoursFromMin(NewMoon()) + ' hours';
 	requestAnimationFrame (moon);
+	lua.update();
 }
 moon();
