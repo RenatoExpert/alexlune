@@ -9,14 +9,8 @@ class Astro {
 	update () {
 		var x = parseFloat(this.svg.getAttributeNS(null, 'x'));
 		var y = parseFloat(this.svg.getAttributeNS(null, 'y'));
-		this.svg.setAttributeNS(null,'x',this.calcx(this.angle));
-		this.svg.setAttributeNS(null,'y',this.calcy(this.angle));
-	}
-	calcx (ang) {
-		return (Math.cos(toRadians(ang))*200)+260;
-	}
-	calcy (ang) {
-		return (Math.sin(toRadians(ang))*200)+260;
+		this.svg.setAttributeNS(null,'x',Calcs.calc_x(this.angle));
+		this.svg.setAttributeNS(null,'y',Calcs.calc_y(this.angle));
 	}
 }
 
