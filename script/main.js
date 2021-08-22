@@ -1,28 +1,22 @@
-var speed = document.getElementById('speed');
-var animationController = document.getElementById('animationController');
 var min = 0;
 var factor = 360000;
 
 lua = new Astro('lua1',119);
 
-action = {
-
-
-
+class Wheel {
+	stop = true;
+	speed = document.getElementById('speed');
+	static runcheck () { 
+		if (stop == 0) { min += (speed.value*2) } 
+		requestAnimationFrame (Wheel.runcheck);
+	}
+	static changeTime (fac) { min += fac }; // acessed by 'Increment' menu (min,hours,days controls)
 }
 
-class Calcs {
-	static pureMin = function (mm) { return mm % 60};
-	static hoursFromMin = function (mm) { return Math.abs(Math.round((mm/60)%24)) };
-	static daysFromMin = function (mm) { return Math.abs(Math.round(mm/1440)) };
-}
-const changeTime = function (fac) { min += fac };
-
-const indispo = function () { window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!')};
-
+// Animation Controller
 // Controller for animation (play/pause)
+
 animationController.innerHTML = '&#x23EF';
-var stop = true;
 animationController.onclick = function () {
 	stop=!stop;
 	if (stop == true) {
@@ -33,9 +27,15 @@ animationController.onclick = function () {
 	}
 }
 
-// its the real animation wheel. Changes the min 
-const runcheck = function () { 
-	if (stop == 0) { min += (speed.value*2) } 
-	requestAnimationFrame (runcheck)
-};
-runcheck();
+class Calcs {
+	static pureMin (mm) { return mm % 60 };
+	static hoursFromMin (mm) { return Math.abs(Math.round((mm/60)%24)) };
+	static daysFromMin (mm) { return Math.abs(Math.round(mm/1440)) };
+	static calc_x (angle) { return (Math.cos(toRadians(angle))*200)+260 };
+	static calc_y (angle) { return (Math.sin(toRadians(angle))*200)+260 };
+}
+
+
+const indispo = function () { window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!')};
+
+Wheel.runcheck();
