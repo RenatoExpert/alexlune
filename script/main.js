@@ -19,7 +19,7 @@ class Calcs {
 	static pureMin		= mm => mm % 60;
 	static hoursFromMin	= mm => Math.abs(Math.round((mm/60)%24));
 	static daysFromMin	= mm => Math.abs(Math.round(mm/1440));
-	static calc_x 		= angle => Math.cos(toRadians(angle))*200)+260;
+	static calc_x 		= angle => (Math.cos(toRadians(angle))*200)+260;
 	static calc_y		= angle => (Math.sin(toRadians(angle))*200)+260;
 }
 
