@@ -23,11 +23,6 @@ class Calcs {
 	static calc_y (angle) { return (Math.sin(toRadians(angle))*200)+260 };
 }
 
-var min = 0;
-var factor = 360000;
-
-lua = new Astro('lua1',119);
-
 class Wheel {
 	stop = true;
 	speed = document.getElementById('speed');
@@ -38,11 +33,6 @@ class Wheel {
 	static changeTime (fac) { min += fac }; // acessed by 'Increment' menu (min,hours,days controls)
 }
 
-var posang = document.getElementById('posang');
-var terra = document.getElementById('terrain');
-var terraang = 0;
-
-function toRadians (angle) {return angle * (Math.PI / 180)}
 const get_angs = function () {
 	terraang = Math.round((min/4)%360);
 }  
@@ -53,16 +43,8 @@ const ciclomaior = function () {
 	terra.style.transform = 'rotate(' + terraang + 'deg)';
 	requestAnimationFrame (ciclomaior);
 }
-ciclomaior();
-var showluz = document.getElementById('lumus');
-var sombra = document.getElementById('sombra');
-var nmLabel = document.getElementById('newmoon');
-var mare = 0;
 
-
-const sombrapos = () => (lua.angle/1.8)-25;
-const NewMoon = () => (min + 21262) % 42524;
-
+function toRadians (angle) {return angle * (Math.PI / 180)}
 const sec_calc = function (alfa) {
 	let beta = Math.round( Math.abs(lua.angle) % 180/1.8);
 	if (alfa >= 180) { 
@@ -85,14 +67,7 @@ const moon = function () {
 	requestAnimationFrame (moon);
 	lua.update();
 }
-moon();
-
-
-
-// Animation Controller
-// Controller for animation (play/pause)
-
-animationController.innerHTML = '&#x23EF';
+const indispo = function () { window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!')};
 animationController.onclick = function () {
 	stop=!stop;
 	if (stop == true) {
@@ -102,10 +77,42 @@ animationController.onclick = function () {
 		this.innerHTML = '&#x23F8';
 	}
 }
+const displayTime = function () {
+	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(min)+18, Calcs.pureMin(min) ));
+	TiDi.innerHTML = horario.toLocaleString('sv');
+	requestAnimationFrame(displayTime);
+}
+
+var min = 0;
+var factor = 360000;
+
+lua = new Astro('lua1',119);
+
+var posang = document.getElementById('posang');
+var terra = document.getElementById('terrain');
+var terraang = 0;
+
+ciclomaior();
+var showluz = document.getElementById('lumus');
+var sombra = document.getElementById('sombra');
+var nmLabel = document.getElementById('newmoon');
+var mare = 0;
+
+
+const sombrapos = () => (lua.angle/1.8)-25;
+const NewMoon = () => (min + 21262) % 42524;
+
+moon();
 
 
 
-const indispo = function () { window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!')};
+// Animation Controller
+// Controller for animation (play/pause)
+
+animationController.innerHTML = '&#x23EF';
+
+
+
 
 Wheel.runcheck();
 
@@ -113,10 +120,5 @@ Wheel.runcheck();
 
 TiDi = document.getElementById('localtime');
 
-const displayTime = function () {
-	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(min)+18, Calcs.pureMin(min) ));
-	TiDi.innerHTML = horario.toLocaleString('sv');
-	requestAnimationFrame(displayTime);
-}
 displayTime();
 
