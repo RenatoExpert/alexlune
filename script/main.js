@@ -40,6 +40,7 @@ class Moon extends Astro {
 		this.update();
 	}
 }
+
 class Calcs {
 	static pureMin		= mm => mm % 60;
 	static hoursFromMin	= mm => Math.abs(Math.round((mm/60)%24));
@@ -58,10 +59,12 @@ class Wheel {
 	static changeTime (fac) { min += fac }; // acessed by 'Increment' menu (min,hours,days controls)
 }
 
+const	toRadians	= angle => angle*(Math.PI / 180);
 const	get_angs	= () => terraang = Math.round((min/4)%360);  
 const	sombrapos	= () => (moon.angle/1.8)-25;
 const	NewMoon		= () => (min + 21262) % 42524;
-const	toRadians	= (angle) => angle*(Math.PI / 180);
+const	indispo		= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
+
 function sec_calc (alfa) {
 	let beta = Math.round( Math.abs(moon.angle) % 180/1.8);
 	if (alfa >= 180) { 
@@ -82,8 +85,6 @@ function ciclomaior () {
 	requestAnimationFrame (ciclomaior);
 }
 
-
-const	indispo	= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
 animationController.onclick = function () {
 	stop=!stop;
 	if (stop == true) {
@@ -93,12 +94,13 @@ animationController.onclick = function () {
 		this.innerHTML = '&#x23F8';
 	}
 }
+
 const displayTime = function () {
 	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(min)+18, Calcs.pureMin(min) ));
 	TiDi.innerHTML = horario.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
-moon_animation = () => {
+function moon_animation () {
 	moon.render_shadow();
 	requestAnimationFrame (moon_animation);
 }	
