@@ -40,12 +40,6 @@ class Moon extends Astro {
 		this.update();
 	}
 }
-moon = new Moon ('lua1',119);
-moon_animation = () => {
-	moon.render_shadow();
-	requestAnimationFrame (moon_animation);
-}	
-moon_animation();
 class Calcs {
 	static pureMin		= mm => mm % 60;
 	static hoursFromMin	= mm => Math.abs(Math.round((mm/60)%24));
@@ -112,3 +106,9 @@ Wheel.runcheck();
 moon.render_shadow();
 displayTime();
 
+moon = new Moon ('lua1',119);
+moon_animation = () => {
+	moon.render_shadow();
+	requestAnimationFrame (moon_animation);
+}	
+moon_animation();
