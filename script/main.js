@@ -1,3 +1,14 @@
+const	posang	= document.getElementById('posang'),
+	terra	= document.getElementById('terrain'),
+	showluz	= document.getElementById('lumus'),
+	sombra	= document.getElementById('sombra'),
+	nmLabel	= document.getElementById('newmoon'),
+	TiDi	= document.getElementById('localtime');
+
+var terraang = 0;
+var min = new Date()/1000;
+var factor = 360000;
+var mare = 0;
 
 class Astro {
 	time_factor;
@@ -93,18 +104,6 @@ const displayTime = function () {
 	TiDi.innerHTML = horario.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
-
-const	posang	= document.getElementById('posang'),
-	terra	= document.getElementById('terrain'),
-	showluz	= document.getElementById('lumus'),
-	sombra	= document.getElementById('sombra'),
-	nmLabel	= document.getElementById('newmoon'),
-	TiDi	= document.getElementById('localtime');
-
-var terraang = 0;
-var min = new Date()/1000;
-var factor = 360000;
-var mare = 0;
 
 
 animationController.innerHTML = '&#x23EF';
