@@ -66,6 +66,7 @@ function moon () {
 	requestAnimationFrame (moon);
 	lua.update();
 }
+
 const	indispo	= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
 animationController.onclick = function () {
 	stop=!stop;
@@ -82,8 +83,6 @@ const displayTime = function () {
 	requestAnimationFrame(displayTime);
 }
 
-
-
 const	posang	= document.getElementById('posang'),
 	terra	= document.getElementById('terrain'),
 	showluz	= document.getElementById('lumus'),
@@ -92,7 +91,7 @@ const	posang	= document.getElementById('posang'),
 	TiDi	= document.getElementById('localtime');
 
 var terraang = 0;
-var min = 0;
+var min = new Date()/1000;
 var factor = 360000;
 var mare = 0;
 
