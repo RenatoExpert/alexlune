@@ -1,5 +1,6 @@
 
 class Astro {
+	time_factor;
 	constructor(id, time_factor) {
 		this.svg = document.getElementById(id);
 		this.time_factor = time_factor;
@@ -14,6 +15,22 @@ class Astro {
 		this.svg.setAttributeNS(null,'y',Calcs.calc_y(this.angle));
 	}
 }
+
+class Moon extends Astro {
+	constructor (id, time_factor) {
+		super (id, time_factor);
+	}
+	render_shadow () {
+		var lumus = sec_calc(this.angle);
+		var mooncx = parseFloat(sombra.getAttributeNS(null, 'cx'));
+		showluz.innerHTML=lumus;
+		sombra.setAttributeNS(null, 'cx', sombrapos());
+		nmLabel.innerHTML = Calcs.daysFromMin(NewMoon()) + ' days,' + Calcs.hoursFromMin(NewMoon()) + ' hours';
+		this.update();
+	}
+}
+moon = new Moon ('lua1',119);
+requestAnimationFrame (moon.render_shadow);
 
 class Calcs {
 	static pureMin		= mm => mm % 60;
@@ -34,11 +51,11 @@ class Wheel {
 }
 
 const	get_angs	= () => terraang = Math.round((min/4)%360);  
-const	sombrapos	= () => (lua.angle/1.8)-25;
+const	sombrapos	= () => (moon.angle/1.8)-25;
 const	NewMoon		= () => (min + 21262) % 42524;
 const	toRadians	= (angle) => angle*(Math.PI / 180);
 function sec_calc (alfa) {
-	let beta = Math.round( Math.abs(lua.angle) % 180/1.8);
+	let beta = Math.round( Math.abs(moon.angle) % 180/1.8);
 	if (alfa >= 180) { 
 		mare=0; 
 		return beta;
@@ -52,20 +69,11 @@ function sec_calc (alfa) {
 
 function ciclomaior () {
 	get_angs();
-	posang.innerHTML = lua.angle;
+	posang.innerHTML = moon.angle;
 	terra.style.transform = 'rotate(' + terraang + 'deg)';
 	requestAnimationFrame (ciclomaior);
 }
 
-function moon () {
-	var lumus = sec_calc(lua.angle);
-	var mooncx = parseFloat(sombra.getAttributeNS(null, 'cx'));
-	showluz.innerHTML=lumus;
-	sombra.setAttributeNS(null, 'cx', sombrapos());
-	nmLabel.innerHTML = Calcs.daysFromMin(NewMoon()) + ' days,' + Calcs.hoursFromMin(NewMoon()) + ' hours';
-	requestAnimationFrame (moon);
-	lua.update();
-}
 
 const	indispo	= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
 animationController.onclick = function () {
@@ -95,11 +103,10 @@ var min = new Date()/1000;
 var factor = 360000;
 var mare = 0;
 
-lua = new Astro('lua1',119);
 
 animationController.innerHTML = '&#x23EF';
 ciclomaior();
 Wheel.runcheck();
-moon();
+moon.render_shadow();
 displayTime();
 
