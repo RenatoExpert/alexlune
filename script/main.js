@@ -33,13 +33,11 @@ class Wheel {
 	static changeTime (fac) { min += fac }; // acessed by 'Increment' menu (min,hours,days controls)
 }
 
-const get_angs = function () {
-	terraang = Math.round((min/4)%360);
-}  
-const sombrapos = () => (lua.angle/1.8)-25;
-const NewMoon = () => (min + 21262) % 42524;
-function toRadians (angle) {return angle * (Math.PI / 180)}
-const sec_calc = function (alfa) {
+const	get_angs	= () => terraang = Math.round((min/4)%360);  
+const	sombrapos	= () => (lua.angle/1.8)-25;
+const	NewMoon		= () => (min + 21262) % 42524;
+const	toRadians	= (angle) => angle*(Math.PI / 180);
+function sec_calc (alfa) {
 	let beta = Math.round( Math.abs(lua.angle) % 180/1.8);
 	if (alfa >= 180) { 
 		mare=0; 
@@ -50,17 +48,16 @@ const sec_calc = function (alfa) {
 		return 100-beta;
 	}
 	else {alert('error')}
-};
+}
 
-
-const ciclomaior = function () {
+function ciclomaior () {
 	get_angs();
 	posang.innerHTML = lua.angle;
 	terra.style.transform = 'rotate(' + terraang + 'deg)';
 	requestAnimationFrame (ciclomaior);
 }
 
-const moon = function () {
+function moon () {
 	var lumus = sec_calc(lua.angle);
 	var mooncx = parseFloat(sombra.getAttributeNS(null, 'cx'));
 	showluz.innerHTML=lumus;
@@ -69,7 +66,7 @@ const moon = function () {
 	requestAnimationFrame (moon);
 	lua.update();
 }
-const indispo = function () { window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!')};
+const	indispo	= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
 animationController.onclick = function () {
 	stop=!stop;
 	if (stop == true) {
