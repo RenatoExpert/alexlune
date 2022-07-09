@@ -98,17 +98,17 @@ const displayTime = function () {
 	TiDi.innerHTML = horario.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
+moon_animation = () => {
+	moon.render_shadow();
+	requestAnimationFrame (moon_animation);
+}	
 
+
+moon = new Moon ('lua1',119);
 
 animationController.innerHTML = '&#x23EF';
 ciclomaior();
 Wheel.runcheck();
 moon.render_shadow();
 displayTime();
-
-moon = new Moon ('lua1',119);
-moon_animation = () => {
-	moon.render_shadow();
-	requestAnimationFrame (moon_animation);
-}	
 moon_animation();
