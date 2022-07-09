@@ -1,7 +1,53 @@
-var min = 0;
-var factor = 360000;
+const	posang	= document.getElementById('posang'),
+	terra	= document.getElementById('terrain'),
+	showluz	= document.getElementById('lumus'),
+	sombra	= document.getElementById('sombra'),
+	nmLabel	= document.getElementById('newmoon'),
+	TiDi	= document.getElementById('localtime');
 
-lua = new Astro('lua1',119);
+var	terraang = 0,
+	min = new Date()/1000,
+	factor = 360000,
+	mare = 0;
+
+class Astro {
+	time_factor;
+	constructor(id, time_factor) {
+		this.svg = document.getElementById(id);
+		this.time_factor = time_factor;
+	}
+	get angle () {
+		return Math.round((min/this.time_factor)%360);
+	}
+	update () {
+		var x = parseFloat(this.svg.getAttributeNS(null, 'x'));
+		var y = parseFloat(this.svg.getAttributeNS(null, 'y'));
+		this.svg.setAttributeNS(null,'x',Calcs.calc_x(this.angle));
+		this.svg.setAttributeNS(null,'y',Calcs.calc_y(this.angle));
+	}
+}
+
+class Moon extends Astro {
+	constructor (id, time_factor) {
+		super (id, time_factor);
+	}
+	render_shadow () {
+		var lumus = sec_calc(this.angle);
+		var mooncx = parseFloat(sombra.getAttributeNS(null, 'cx'));
+		showluz.innerHTML=lumus;
+		sombra.setAttributeNS(null, 'cx', sombrapos());
+		nmLabel.innerHTML = Calcs.daysFromMin(NewMoon()) + ' days,' + Calcs.hoursFromMin(NewMoon()) + ' hours';
+		this.update();
+	}
+}
+
+class Calcs {
+	static pureMin		= mm => mm % 60;
+	static hoursFromMin	= mm => Math.abs(Math.round((mm/60)%24));
+	static daysFromMin	= mm => Math.abs(Math.round(mm/1440));
+	static calc_x 		= angle => (Math.cos(toRadians(angle))*200)+260;
+	static calc_y		= angle => (Math.sin(toRadians(angle))*200)+260;
+}
 
 class Wheel {
 	stop = true;
@@ -13,10 +59,32 @@ class Wheel {
 	static changeTime (fac) { min += fac }; // acessed by 'Increment' menu (min,hours,days controls)
 }
 
-// Animation Controller
-// Controller for animation (play/pause)
+const	toRadians	= angle => angle*(Math.PI / 180);
+const	get_angs	= () => terraang = Math.round((min/4)%360);  
+const	sombrapos	= () => (moon.angle/1.8)-25;
+const	NewMoon		= () => (min + 21262) % 42524;
+const	indispo		= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
 
-animationController.innerHTML = '&#x23EF';
+function sec_calc (alfa) {
+	let beta = Math.round( Math.abs(moon.angle) % 180/1.8);
+	if (alfa >= 180) { 
+		mare=0; 
+		return beta;
+	} 
+	else if (alfa < 180) { 
+		mare=1
+		return 100-beta;
+	}
+	else {alert('error')}
+}
+
+function ciclomaior () {
+	get_angs();
+	posang.innerHTML = moon.angle;
+	terra.style.transform = 'rotate(' + terraang + 'deg)';
+	requestAnimationFrame (ciclomaior);
+}
+
 animationController.onclick = function () {
 	stop=!stop;
 	if (stop == true) {
@@ -27,15 +95,22 @@ animationController.onclick = function () {
 	}
 }
 
-class Calcs {
-	static pureMin (mm) { return mm % 60 };
-	static hoursFromMin (mm) { return Math.abs(Math.round((mm/60)%24)) };
-	static daysFromMin (mm) { return Math.abs(Math.round(mm/1440)) };
-	static calc_x (angle) { return (Math.cos(toRadians(angle))*200)+260 };
-	static calc_y (angle) { return (Math.sin(toRadians(angle))*200)+260 };
+const displayTime = function () {
+	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(min)+18, Calcs.pureMin(min) ));
+	TiDi.innerHTML = horario.toLocaleString('sv');
+	requestAnimationFrame(displayTime);
 }
+function moon_animation () {
+	moon.render_shadow();
+	requestAnimationFrame (moon_animation);
+}	
 
 
-const indispo = function () { window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!')};
+moon = new Moon ('lua1',119);
 
+animationController.innerHTML = '&#x23EF';
+ciclomaior();
 Wheel.runcheck();
+moon.render_shadow();
+displayTime();
+moon_animation();
