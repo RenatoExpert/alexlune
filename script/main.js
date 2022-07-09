@@ -87,13 +87,12 @@ const NewMoon = () => (min + 21262) % 42524;
 
 
 
-var posang = document.getElementById('posang');
-var terra = document.getElementById('terrain');
-
-var showluz = document.getElementById('lumus');
-var sombra = document.getElementById('sombra');
-var nmLabel = document.getElementById('newmoon');
-TiDi = document.getElementById('localtime');
+const	posang	= document.getElementById('posang'),
+	terra	= document.getElementById('terrain'),
+	showluz	= document.getElementById('lumus'),
+	sombra	= document.getElementById('sombra'),
+	nmLabel	= document.getElementById('newmoon'),
+	TiDi	= document.getElementById('localtime');
 
 var terraang = 0;
 var min = 0;
