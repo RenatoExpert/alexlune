@@ -36,14 +36,8 @@ class Wheel {
 const get_angs = function () {
 	terraang = Math.round((min/4)%360);
 }  
-
-const ciclomaior = function () {
-	get_angs();
-	posang.innerHTML = lua.angle;
-	terra.style.transform = 'rotate(' + terraang + 'deg)';
-	requestAnimationFrame (ciclomaior);
-}
-
+const sombrapos = () => (lua.angle/1.8)-25;
+const NewMoon = () => (min + 21262) % 42524;
 function toRadians (angle) {return angle * (Math.PI / 180)}
 const sec_calc = function (alfa) {
 	let beta = Math.round( Math.abs(lua.angle) % 180/1.8);
@@ -57,6 +51,14 @@ const sec_calc = function (alfa) {
 	}
 	else {alert('error')}
 };
+
+
+const ciclomaior = function () {
+	get_angs();
+	posang.innerHTML = lua.angle;
+	terra.style.transform = 'rotate(' + terraang + 'deg)';
+	requestAnimationFrame (ciclomaior);
+}
 
 const moon = function () {
 	var lumus = sec_calc(lua.angle);
@@ -82,8 +84,6 @@ const displayTime = function () {
 	TiDi.innerHTML = horario.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
-const sombrapos = () => (lua.angle/1.8)-25;
-const NewMoon = () => (min + 21262) % 42524;
 
 
 
