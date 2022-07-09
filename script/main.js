@@ -16,11 +16,11 @@ class Astro {
 }
 
 class Calcs {
-	static pureMin (mm) { return mm % 60 };
-	static hoursFromMin (mm) { return Math.abs(Math.round((mm/60)%24)) };
-	static daysFromMin (mm) { return Math.abs(Math.round(mm/1440)) };
-	static calc_x (angle) { return (Math.cos(toRadians(angle))*200)+260 };
-	static calc_y (angle) { return (Math.sin(toRadians(angle))*200)+260 };
+	static pureMin		= mm => mm % 60;
+	static hoursFromMin	= mm => Math.abs(Math.round((mm/60)%24));
+	static daysFromMin	= mm => Math.abs(Math.round(mm/1440));
+	static calc_x 		= angle => Math.cos(toRadians(angle))*200)+260;
+	static calc_y		= angle => (Math.sin(toRadians(angle))*200)+260;
 }
 
 class Wheel {
