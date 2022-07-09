@@ -82,43 +82,29 @@ const displayTime = function () {
 	TiDi.innerHTML = horario.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
-
-var min = 0;
-var factor = 360000;
-
-lua = new Astro('lua1',119);
-
-var posang = document.getElementById('posang');
-var terra = document.getElementById('terrain');
-var terraang = 0;
-
-ciclomaior();
-var showluz = document.getElementById('lumus');
-var sombra = document.getElementById('sombra');
-var nmLabel = document.getElementById('newmoon');
-var mare = 0;
-
-
 const sombrapos = () => (lua.angle/1.8)-25;
 const NewMoon = () => (min + 21262) % 42524;
 
-moon();
 
 
+var posang = document.getElementById('posang');
+var terra = document.getElementById('terrain');
 
-// Animation Controller
-// Controller for animation (play/pause)
-
-animationController.innerHTML = '&#x23EF';
-
-
-
-
-Wheel.runcheck();
-
-
-
+var showluz = document.getElementById('lumus');
+var sombra = document.getElementById('sombra');
+var nmLabel = document.getElementById('newmoon');
 TiDi = document.getElementById('localtime');
 
+var terraang = 0;
+var min = 0;
+var factor = 360000;
+var mare = 0;
+
+lua = new Astro('lua1',119);
+
+animationController.innerHTML = '&#x23EF';
+ciclomaior();
+Wheel.runcheck();
+moon();
 displayTime();
 
