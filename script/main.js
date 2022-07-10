@@ -6,7 +6,7 @@ const	posang	= document.getElementById('posang'),
 	TiDi	= document.getElementById('localtime');
 
 var	terraang	= 0,
-	utime		= new Date()/1000;
+	utime		= new Date()*1;
 
 class Astro {
 	time_factor;
@@ -43,11 +43,11 @@ class Moon extends Astro {
 		else {alert('error')}
 	}
 	render_shadow () {
-		var lumus = this.sec_calc(this.angle);
-		var mooncx = parseFloat(sombra.getAttributeNS(null, 'cx'));
-		showluz.innerHTML=lumus;
-		sombra.setAttributeNS(null, 'cx', sombrapos());
-		nmLabel.innerHTML = Calcs.daysFromMin(NewMoon()) + ' days,' + Calcs.hoursFromMin(NewMoon()) + ' hours';
+		var	lumus	= this.sec_calc (this.angle);
+		var	mooncx	= parseFloat (sombra.getAttributeNS(null, 'cx'));
+		showluz.innerHTML	= lumus;
+		sombra.setAttributeNS (null, 'cx', sombrapos());
+		nmLabel.innerHTML	= Calcs.daysFromMin (NewMoon()) + ' days,' + Calcs.hoursFromMin(NewMoon()) + ' hours';
 		this.update();
 	}
 }
@@ -95,7 +95,7 @@ animationController.onclick = function () {
 	}
 }
 
-const displayTime = function () {
+function displayTime () {
 	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(utime)+18, Calcs.pureMin(utime) ));
 	TiDi.innerHTML = horario.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
