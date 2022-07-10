@@ -91,7 +91,7 @@ animationController.onclick	= function () {
 }
 
 function displayTime () {
-	TiDi.innerHTML = utime.toLocaleString('sv');
+	TiDi.innerHTML = new Date(utime).toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
 function moon_animation () {
