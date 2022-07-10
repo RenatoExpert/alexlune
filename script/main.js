@@ -15,7 +15,7 @@ class Astro {
 		this.time_factor = time_factor;
 	}
 	get angle () {
-		return Math.round((1000*utime/this.time_factor)%360);
+		return Math.round((utime/this.time_factor)%360);
 	}
 	update () {
 		var x = parseFloat(this.svg.getAttributeNS(null, 'x'));
