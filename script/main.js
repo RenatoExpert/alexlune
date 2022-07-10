@@ -6,7 +6,7 @@ const	posang	= document.getElementById('posang'),
 	TiDi	= document.getElementById('localtime');
 
 var	terraang	= 0,
-	utime		= new Date();
+	utime		= new Date().getTime();
 
 class Astro {
 	time_factor;
@@ -15,13 +15,14 @@ class Astro {
 		this.time_factor = time_factor;
 	}
 	get angle () {
-		return Math.round((utime/this.time_factor)%360);
+		return Math.round((1000*utime/this.time_factor)%360);
 	}
 	update () {
 		var x = parseFloat(this.svg.getAttributeNS(null, 'x'));
 		var y = parseFloat(this.svg.getAttributeNS(null, 'y'));
-		this.svg.setAttributeNS(null,'x',Calcs.calc_x(this.angle));
-		this.svg.setAttributeNS(null,'y',Calcs.calc_y(this.angle));
+		console.log (utime)
+		this.svg.setAttributeNS (null,'x',Calcs.calc_x(this.angle));
+		this.svg.setAttributeNS (null,'y',Calcs.calc_y(this.angle));
 	}
 }
 
