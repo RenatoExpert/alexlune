@@ -5,6 +5,7 @@ const	posang	= document.getElementById('posang'),
 	nmLabel	= document.getElementById('newmoon'),
 	TiDi	= document.getElementById('localtime');
 
+
 var	terraang = 0,
 	min = new Date()/1000;
 
@@ -84,6 +85,7 @@ function ciclomaior () {
 	requestAnimationFrame (ciclomaior);
 }
 
+animationController.innerHTML = '&#x23EF';
 animationController.onclick = function () {
 	stop=!stop;
 	if (stop == true) {
@@ -107,7 +109,6 @@ function moon_animation () {
 
 moon = new Moon ('lua1',119);
 
-animationController.innerHTML = '&#x23EF';
 ciclomaior();
 Wheel.runcheck();
 moon.render_shadow();
