@@ -64,7 +64,7 @@ class Wheel {
 	stop = true;
 	speed = document.getElementById('speed');
 	static runcheck () { 
-		utime	= stop ? utime : utime+(2*speed.value);
+		utime	= stop ? utime : utime+(1000*speed.value);
 		requestAnimationFrame (Wheel.runcheck);
 	}
 	static changeTime (fac) { utime += fac }; // acessed by 'Increment' menu (min,hours,days controls)
