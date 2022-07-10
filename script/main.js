@@ -6,8 +6,7 @@ const	posang	= document.getElementById('posang'),
 	TiDi	= document.getElementById('localtime');
 
 var	terraang = 0,
-	min = new Date()/1000,
-	mare = 0;
+	min = new Date()/1000;
 
 class Astro {
 	time_factor;
@@ -27,17 +26,18 @@ class Astro {
 }
 
 class Moon extends Astro {
+	mare = false;
 	constructor (id, time_factor) {
 		super (id, time_factor);
 	}
 	sec_calc (alfa) {
-		let beta = Math.round( Math.abs(moon.angle) % 180/1.8);
+		let	beta	= Math.round( Math.abs(moon.angle) % 180/1.8);
 		if (alfa >= 180) { 
-			mare=0; 
+			this.mare	= false; 
 			return beta;
 		} 
 		else if (alfa < 180) { 
-			mare=1
+			this.mare	= true;
 			return 100-beta;
 		}
 		else {alert('error')}
