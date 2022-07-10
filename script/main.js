@@ -6,7 +6,7 @@ const	posang	= document.getElementById('posang'),
 	TiDi	= document.getElementById('localtime');
 
 var	terraang	= 0,
-	min		= new Date()/1000;
+	utime		= new Date()/1000;
 
 class Astro {
 	time_factor;
@@ -15,7 +15,7 @@ class Astro {
 		this.time_factor = time_factor;
 	}
 	get angle () {
-		return Math.round((min/this.time_factor)%360);
+		return Math.round((utime/this.time_factor)%360);
 	}
 	update () {
 		var x = parseFloat(this.svg.getAttributeNS(null, 'x'));
@@ -64,16 +64,16 @@ class Wheel {
 	stop = true;
 	speed = document.getElementById('speed');
 	static runcheck () { 
-		if (stop == 0) { min += (speed.value*2) } 
+		if (stop == 0) { utime += (speed.value*2) } 
 		requestAnimationFrame (Wheel.runcheck);
 	}
-	static changeTime (fac) { min += fac }; // acessed by 'Increment' menu (min,hours,days controls)
+	static changeTime (fac) { utime += fac }; // acessed by 'Increment' menu (min,hours,days controls)
 }
 
 const	toRadians	= angle => angle*(Math.PI / 180);
-const	get_angs	= () => terraang = Math.round((min/4)%360);  
+const	get_angs	= () => terraang = Math.round((utime/4)%360);  
 const	sombrapos	= () => (moon.angle/1.8)-25;
-const	NewMoon		= () => (min + 21262) % 42524;
+const	NewMoon		= () => (utime + 21262) % 42524;
 const	indispo		= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
 
 
@@ -96,7 +96,7 @@ animationController.onclick = function () {
 }
 
 const displayTime = function () {
-	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(min)+18, Calcs.pureMin(min) ));
+	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(utime)+18, Calcs.pureMin(utime) ));
 	TiDi.innerHTML = horario.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
