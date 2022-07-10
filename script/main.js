@@ -5,9 +5,8 @@ const	posang	= document.getElementById('posang'),
 	nmLabel	= document.getElementById('newmoon'),
 	TiDi	= document.getElementById('localtime');
 
-
-var	terraang = 0,
-	min = new Date()/1000;
+var	terraang	= 0,
+	min		= new Date()/1000;
 
 class Astro {
 	time_factor;
