@@ -6,7 +6,7 @@ const	posang	= document.getElementById('posang'),
 	TiDi	= document.getElementById('localtime');
 
 var	terraang	= 0,
-	utime		= new Date()*1;
+	utime		= new Date();
 
 class Astro {
 	time_factor;
@@ -53,7 +53,6 @@ class Moon extends Astro {
 }
 
 class Calcs {
-	static pureMin		= mm => mm % 60;
 	static hoursFromMin	= mm => Math.abs(Math.round((mm/60)%24));
 	static daysFromMin	= mm => Math.abs(Math.round(mm/1440));
 	static calc_x 		= angle => (Math.cos(toRadians(angle))*200)+260;
@@ -96,8 +95,7 @@ animationController.onclick = function () {
 }
 
 function displayTime () {
-	var horario = new Date(Date.UTC(96, 1, 2, Calcs.hoursFromMin(utime)+18, Calcs.pureMin(utime) ));
-	TiDi.innerHTML = horario.toLocaleString('sv');
+	TiDi.innerHTML = utime.toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
 function moon_animation () {
