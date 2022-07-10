@@ -7,7 +7,6 @@ const	posang	= document.getElementById('posang'),
 
 var	terraang = 0,
 	min = new Date()/1000,
-	factor = 360000,
 	mare = 0;
 
 class Astro {
