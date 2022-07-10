@@ -12,7 +12,7 @@ class Astro {
 	time_factor;
 	constructor(id, time_factor) {
 		this.svg = document.getElementById(id);
-		this.time_factor = time_factor;
+		this.time_factor = time_factor*1000*60;
 	}
 	get angle () {
 		return Math.round((utime/this.time_factor)%360);
@@ -64,7 +64,7 @@ class Wheel {
 	stop = true;
 	speed = document.getElementById('speed');
 	static runcheck () { 
-		utime	= stop ? utime : utime+(1000*speed.value);
+		utime	= stop ? utime : utime+(1000*60*speed.value);
 		requestAnimationFrame (Wheel.runcheck);
 	}
 	static changeTime (fac) { utime += fac }; // acessed by 'Increment' menu (min,hours,days controls)
