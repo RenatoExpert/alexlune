@@ -47,14 +47,14 @@ class Moon extends Astro {
 		var	mooncx	= parseFloat (sombra.getAttributeNS(null, 'cx'));
 		showluz.innerHTML	= lumus;
 		sombra.setAttributeNS (null, 'cx', sombrapos());
-		nmLabel.innerHTML	= Calcs.daysFromMin (NewMoon()) + ' days,' + Calcs.hoursFromMin(NewMoon()) + ' hours';
+		nmLabel.innerHTML	= Calcs.daysFromMs (NewMoon()) + ' days,' + Calcs.hoursFromMs (NewMoon()) + ' hours';
 		this.update();
 	}
 }
 
 class Calcs {
-	static hoursFromMin	= mm => Math.abs(Math.round((mm/60)%24));
-	static daysFromMin	= mm => Math.abs(Math.round(mm/1440));
+	static hoursFromMs	= mm => Math.abs(Math.round((1000*mm/60)%24));
+	static daysFromMs	= mm => Math.abs(Math.round(1000*mm/1440));
 	static calc_x 		= angle => (Math.cos(toRadians(angle))*200)+260;
 	static calc_y		= angle => (Math.sin(toRadians(angle))*200)+260;
 }
