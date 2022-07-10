@@ -85,7 +85,7 @@ function ciclomaior () {
 }
 
 animationController.innerHTML	= '&#x23EF';
-animationController.onclick	= () => {
+animationController.onclick	= function () {
 	stop	= !stop;
 	this.innerHTML	= stop ? '&#x23EF' : '&#x23F8';
 }
