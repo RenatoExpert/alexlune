@@ -71,7 +71,7 @@ class Wheel {
 }
 
 const	toRadians	= angle => angle*(Math.PI / 180);
-const	get_angs	= () => terraang = Math.round((utime/4)%360);  
+const	get_angs	= () => terraang = Math.round((utime/(4*1000*60))%360);  
 const	sombrapos	= () => (moon.angle/1.8)-25;
 const	NewMoon		= () => (utime + 21262) % 42524;
 const	indispo		= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
