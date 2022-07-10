@@ -84,15 +84,10 @@ function ciclomaior () {
 	requestAnimationFrame (ciclomaior);
 }
 
-animationController.innerHTML = '&#x23EF';
-animationController.onclick = function () {
-	stop=!stop;
-	if (stop == true) {
-		this.innerHTML = '&#x23EF';
-	}
-	else {
-		this.innerHTML = '&#x23F8';
-	}
+animationController.innerHTML	= '&#x23EF';
+animationController.onclick	= () => {
+	stop	= !stop;
+	this.innerHTML	= stop ? '&#x23EF' : '&#x23F8';
 }
 
 function displayTime () {
