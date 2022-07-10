@@ -74,7 +74,7 @@ class Wheel {
 		utime	= stop ? utime : utime+(1000*60*speed.value);
 		requestAnimationFrame (Wheel.runcheck);
 	}
-	static changeTime (fac) { utime += fac }; // acessed by 'Increment' menu (min,hours,days controls)
+	static changeTime (fac) { utime += fac * 60 * 1000 }; // acessed by 'Increment' menu (min,hours,days controls)
 }
 
 const	toRadians	= angle => angle*(Math.PI / 180);
