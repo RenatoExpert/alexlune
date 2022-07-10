@@ -17,6 +17,14 @@ class Astro {
 	get angle () {
 		return Math.round((utime/this.time_factor)%360);
 	}
+	get next_time () {
+		let	percent	= 1-(this.angle/360);
+		//	Moon orbit shall be a period of a Synodic Month: 29 d 12 h 44
+		let	remains	= percent*((29*24*60*60*1000)+(12*60*60*1000)+(44*60*1000));
+		let	days	= Math.floor (remains / (24*60*60*1000));
+		let	hours	= Math.floor (remains / (60*60*1000)%24);
+		return `${days} days, ${hours} hours`
+	}
 	update () {
 		var x = parseFloat(this.svg.getAttributeNS(null, 'x'));
 		var y = parseFloat(this.svg.getAttributeNS(null, 'y'));
@@ -48,7 +56,7 @@ class Moon extends Astro {
 		var	mooncx	= parseFloat (sombra.getAttributeNS(null, 'cx'));
 		showluz.innerHTML	= lumus;
 		sombra.setAttributeNS (null, 'cx', sombrapos());
-		nmLabel.innerHTML	= `${NewMoon().getDate()} days ${NewMoon().getHours()} hours`;
+		nmLabel.innerHTML	= this.next_time;
 		this.update();
 	}
 }
@@ -73,8 +81,6 @@ class Wheel {
 const	toRadians	= angle => angle*(Math.PI / 180);
 const	get_angs	= () => terraang = Math.round((utime/(4*1000*60))%360);  
 const	sombrapos	= () => (moon.angle/1.8)-25;
-//	Moon orbit shall be a period of a Synodic Month: 29 d 12 h 44
-const	NewMoon		= () => new Date (utime % ((29*24*60*60*1000)+(12*60*60*1000)+(44*60*1000)));
 const	indispo		= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN: Not avaliable!');
 
 
