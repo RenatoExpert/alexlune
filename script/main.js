@@ -28,7 +28,6 @@ class Astro {
 	update () {
 		var x = parseFloat(this.svg.getAttributeNS(null, 'x'));
 		var y = parseFloat(this.svg.getAttributeNS(null, 'y'));
-		console.log (utime)
 		this.svg.setAttributeNS (null,'x',Calcs.calc_x(this.angle));
 		this.svg.setAttributeNS (null,'y',Calcs.calc_y(this.angle));
 	}
