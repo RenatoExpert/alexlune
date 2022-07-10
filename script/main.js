@@ -94,13 +94,13 @@ function displayTime () {
 	TiDi.innerHTML = new Date(utime).toLocaleString('sv');
 	requestAnimationFrame(displayTime);
 }
+
 function moon_animation () {
 	moon.render_shadow();
 	requestAnimationFrame (moon_animation);
 }	
 
-
-moon = new Moon ('lua1',119);
+moon = new Moon ('lua1', 119);
 
 ciclomaior();
 Wheel.runcheck();
