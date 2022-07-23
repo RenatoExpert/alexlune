@@ -15,14 +15,14 @@ class Astro {
 		this.time_factor = time_factor*1000*60;
 	}
 	get angle () {
-		return Math.round((utime/this.time_factor)%360);
+		return ~~((utime/this.time_factor)%360);
 	}
 	get next_time () {
 		let	percent	= 1-(this.angle/360);
 		//	Moon orbit shall be a period of a Synodic Month: 29 d 12 h 44
 		let	remains	= percent*((29*24*60*60*1000)+(12*60*60*1000)+(44*60*1000));
-		let	days	= Math.floor (remains / (24*60*60*1000));
-		let	hours	= Math.floor (remains / (60*60*1000)%24);
+		let	days	= ~~ (remains / (24*60*60*1000));
+		let	hours	= ~~ (remains / (60*60*1000)%24);
 		return `${days} days, ${hours} hours`
 	}
 	update () {
@@ -39,7 +39,7 @@ class Moon extends Astro {
 		super (id, time_factor);
 	}
 	sec_calc (alfa) {
-		let	beta	= Math.round( Math.abs(moon.angle) % 180/1.8);
+		let	beta	= ~~( Math.abs(moon.angle) % 180/1.8);
 		if (alfa >= 180) { 
 			this.mare	= false; 
 			return beta;
