@@ -85,7 +85,7 @@ const	indispo		= () => window.alert('BRPT: Recurso ainda nao disponivel! \r\nEN:
 
 function ciclomaior () {
 	get_angs();
-	posang.innerHTML = moon.angle;
+	posang.innerHTML = ~~ moon.angle;
 	terra.style.transform = 'rotate(' + terraang + 'deg)';
 	requestAnimationFrame (ciclomaior);
 }
