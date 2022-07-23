@@ -15,7 +15,7 @@ class Astro {
 		this.time_factor = time_factor*1000*60;
 	}
 	get angle () {
-		return ~~((utime/this.time_factor)%360);
+		return ((utime/this.time_factor)%360);
 	}
 	get next_time () {
 		let	percent	= 1-(this.angle/360);
