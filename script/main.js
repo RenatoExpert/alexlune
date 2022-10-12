@@ -113,3 +113,9 @@ Wheel.runcheck();
 moon.render_shadow();
 displayTime();
 moon_animation();
+
+/* script para trocar de pág e idioma */
+let selectEl = document.getElementsByTagName('select');
+selectEl[0].addEventListener('change', function() {
+    location.href=this.value;
+});
