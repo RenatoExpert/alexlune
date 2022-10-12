@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang='pt-br'>
+	<head>
+		<title>Alexlune Simulador</title>
+		<meta charset="UTF-8">
+		
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-53X57PN');</script>
+		<!-- End Google Tag Manager -->
+		
+		<link rel="stylesheet" href="css/styles.css">
+	</head>
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-53X57PN"
+				height="0" width="0" style="display:none;visibility:hidden">
+			</iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		
+		
+		<div id='header' class='flex margin30'>
+			<div>
+				<h1>Alexlune • Simulador de Lua (V.Alpha)</h1>
+			</div>
+			<div id='cred-lang' class='flex margin30'>
+				<div>
+					<p><a href='#about'>Sobre</a></p>
+				</div>
+				<div class='pad50'>
+					<p>
+						<label for="language">Idioma: </label>
+						<select id="language" class='oneline'>
+							<option value="index.html">English</option>
+							<option value="portugues.html">Português</option>
+							<option value="#">Français</option>
+							<option value="#">Español</option>
+						</select>
+					</p>
+				</div>		
+			</div>
+		</div>
+		<div id='big' class='border-solid flex margin30'>
+			<div id='left'>
+				<div id='maincan' class=''>
+					<svg id='first' width='600' height='600'>
+						<circle id='big-circle' cx='300' cy='300' r='200' stroke='yellow' stroke-width='5' fill='none' /> 
+						<circle id='sun' cx='-250' cy='300' r='300' fill='yellow'/>
+						<svg id='lua1' x='260' y='260'>
+							<g>
+								<path d=" M 40 80 A 40 40 90 0 1 40 00" fill='white'/>
+								<path d=" M 40 00 A 40 40 270 0 1 40 80" fill='gray' />
+							</g>
+						</svg>
+					</svg>
+					<div id='marcagrau'>
+						<p>Ângulo da Lua: <var id='posang'></var>º</p>
+					</div>
+					<div id='terra'>
+						<img id='terrain' src='img/terrapure.svg' width='100' height'120'></svg>
+					</div>
+				</div>
+				<div id='lebo' class='flex'>                                         
+					<div id='leboleft' class='flex w60pc' >
+						<div class='border-solid w50pc pad20'>
+							<h3>Animação</h3>
+							<button id='animationController'>&#x25B6</button>
+							<label for 'speed'><p>&#x1F40E &#x2329 &#x1F422 &#x0F33 &#x1F422 &#x232A &#x1F40E</p></label>
+							<p><input type="range" id="speed" name="speed" min="-100" max="100" value='10'></p>
+						</div>
+						<div id='changeTime' class='border-solid w50pc'>
+							<span class='centerTXT'>
+								<h3 class='mgZERO-bottom'>Adicionar: </h3>
+							</span>
+							<div class='flex' class='changeMenu' >
+								<div id='changeLabels' class='rightTXT w50pc'>
+									<p>Dia: <p>
+									<p>Hora: </p>
+									<p>Minuto: </p>
+								</div>
+								<div id='changeButtons'>
+									<p>
+										<button onclick='Wheel.changeTime(1440)'>+</button>
+										<button onclick='Wheel.changeTime(-1440)'>-</button>
+									</p>
+									<p>
+										<button onclick='Wheel.changeTime(+60)'>+</button>
+										<button onclick='Wheel.changeTime(-60)'>-</button>
+									</p>
+									<p>
+										<button onclick='Wheel.changeTime(+1)'>+</button>
+										<button onclick='Wheel.changeTime(-1)'>-</button>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='leboright' class='border-solid w40pc pad20'>
+						<h3>Opções do Diagrama</h3>
+						<input type='checkbox'><label>Mostrar ângulo</label><br>
+						<input type='checkbox'><label>Mostrar marco lunar</label><br>
+						<input type='checkbox'><label>Mostrar marcas de tempo</label>
+					</div>	
+				</div>
+			</div>
+			<div id='right' class='border-solid float-right'>
+				<div id='riup' class='border-solid pad50'>
+					<h2>Fase da Lua</h2>
+					<div id='second' class='sec-img'>
+						<svg id='second-svg' width="150" height="150">
+							<mask id='sombramask'>
+								<circle cx="75" cy="75" r="50" stroke="gray" stroke-width="4" fill="white"/>
+							</mask>
+								<circle cx="75" cy="75" r="50" stroke="gray" stroke-width="4" fill="white"/>
+							<circle id='sombra' cx="-25" cy="75" r="50" stroke="none" stroke-width="4" fill="gray"/>
+
+						</svg>
+					</div>
+					<p><var id='lumus'></var>% iluminada </p>
+					<p>tempo desde a lua nova:</p>
+					<p><span id='newmoon'>1 dia; 0 horas</span></p>
+					<button onclick='indispo()'>Ocultar</button>
+				</div>
+				<div id='ribo' class='border-solid pad50'>
+					<h2>Diagrama do Horizonte</h2>
+					<div id='third' class='sec-img'>
+						<svg width="100" height="100">
+							<circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+						</svg>
+					</div>
+					<p>Hora local do observador:</p>
+					<p><span id='localtime'>10:52 am</span></p>
+					<button onclick='indispo()'>Ocultar</button>
+				</div>
+			</div>
+		</div>
+		<div id='about' class='border-solid block margin30 pad20'>
+			<h2>Sobre</h2>
+			<p>
+				Alexlune é um webapp de código aberto desenvolvido por <a>Renato Araujo</a>. É assim chamado em homenagem ao grande <a>Professor Alexandre Zabot</a> UFSC.
+				<br>
+                O objetivo é imitar um velho simulador, feito usando Flash, uma antiga tecnologia web que não está mais disponível para o público.
+				Espero que isto ajude a difundir a educação cientíica em todo o mundo, bem como apoiar uma aprendizagem mais agradável e clara sobre este tema.
+			</p>
+			<p>
+				<a href='https://github.com/RenatoExpert/alexlune' target="_blank">
+					<button>
+						Veja Github Repo
+					</button>
+				</a>
+			</p>
+			<hr>
+			<h3>O autor: Renato Araujo</h3>
+			<p>
+				<ul>
+					<li>
+						<a>
+							Website
+						</a>
+					</li> 
+					<li>
+						<a>
+							Github Page
+						</a>
+					</li>
+				</ul>
+			</p>
+			<hr>
+			<h3>References</h3>
+			<p>
+				<ul>
+					<li>
+						Professor Zabot's Astronomy Course: 
+						<a href='https://astrofisica.ufsc.br/aa/g/' target="_blank">
+							Oficial Website
+						</a>
+						<a>
+							Youtube Playlist
+						</a>
+					</li>
+					<li>
+						<a href='https://gateway.golabz.eu/embed/apps/897b0ec0-0055-4a20-a6bd-6245315733f0/app.html' target="_blank">
+							Original Flash Content
+						</a>
+					</li>
+					<li>
+						<a href='https://astro.unl.edu/naap/lps/lps.html' target="_blank">
+							Astronomy Education at the University of Nebraska-Lincoln's Page
+						</a>
+					</li>
+				</ul>
+			</p>
+		</div>
+
+		<script src='script/main.js'>
+		</script>
+
+	</body>
+</html>
